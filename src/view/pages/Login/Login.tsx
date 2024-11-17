@@ -6,7 +6,7 @@ export function Login() {
         <div>
             <header className="flex flex-col items-center gap-4">
                 <h1 className="text-2xl font-bold tracking-[-1px]">
-                    Crie sua conta
+                    Entre em sua conta
                 </h1>
                 <p className="space-x-2">
                     <span className="text-gray-700 tracking-[-0.5px]">
