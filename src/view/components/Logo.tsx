@@ -1,11 +1,14 @@
-export function Logo() {
+interface Logo {
+    className?: string;
+}
+
+export function Logo({ className }: Logo) {
     return (
         <svg
-            width="106"
-            height="24"
             viewBox="0 0 106 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            className={className}
         >
             <path
                 fill-rule="evenodd"
