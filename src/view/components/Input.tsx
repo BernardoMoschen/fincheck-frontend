@@ -5,7 +5,7 @@ interface InputProps extends ComponentProps<"input"> {
     label?: string;
 }
 
-export default function Input({ name, id, placeholder, ...props }: InputProps) {
+export function Input({ name, id, placeholder, ...props }: InputProps) {
     const inputId = id;
     return (
         <div className="relative">
