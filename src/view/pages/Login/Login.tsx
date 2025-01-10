@@ -33,15 +33,12 @@ export function Login() {
                     {...register("email")}
                     error={errors.email?.message}
                 />
-
                 <Input
                     type="password"
                     placeholder="Senha"
                     {...register("password")}
-                    error="Senha invalida"
-                    // error={errors.password?.message}
+                    error={errors.password?.message}
                 />
-
                 <Button type="submit" className="mt-2">
                     Entrar
                 </Button>

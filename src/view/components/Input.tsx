@@ -9,7 +9,10 @@ interface InputProps extends ComponentProps<"input"> {
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-    ({ name, id, placeholder, error, ...props }: InputProps, ref) => {
+    (
+        { name, id, placeholder, error, className, ...props }: InputProps,
+        ref
+    ) => {
         const inputId = id;
 
         return (
@@ -22,7 +25,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                     placeholder=" "
                     className={cn(
                         "w-full bg-white rounded-lg pt-4 placeholder-shown:pt-0 border border-gray-500 px-3 h-[52px] text-gray-800  peer focus:border-gray-900 transition-all outline-none",
-                        error && "border-red-900 focus:border-red-900"
+                        error && "border-red-900 focus:border-red-900",
+                        className
                     )}
                 />
                 <label
