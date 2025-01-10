@@ -31,20 +31,17 @@ export function Login() {
                     type="email"
                     placeholder="Email"
                     {...register("email")}
+                    error={errors.email?.message}
                 />
-                {errors.email && (
-                    <span className="text-red-500">{errors.email.message}</span>
-                )}
+
                 <Input
                     type="password"
                     placeholder="Senha"
                     {...register("password")}
+                    error="Senha invalida"
+                    // error={errors.password?.message}
                 />
-                {errors.password && (
-                    <span className="text-red-500">
-                        {errors.password.message}
-                    </span>
-                )}
+
                 <Button type="submit" className="mt-2">
                     Entrar
                 </Button>
