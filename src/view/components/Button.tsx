@@ -11,6 +11,7 @@ export function Button({
     className,
     isLoading,
     disabled,
+    children,
     ...props
 }: ButtonProps) {
     return (
@@ -18,11 +19,12 @@ export function Button({
             {...props}
             disabled={disabled || isLoading}
             className={cn(
-                "bg-teal-900 hover:bg-teal-800 disabled:bg-gray-100 px-6 h-12 rounded-2xl font-medium text-white disabled:text-gray-400 disabled:cursor-not-allowed transition-all",
+                "bg-teal-900 hover:bg-teal-800 disabled:bg-gray-100 px-6 h-12 rounded-2xl font-medium text-white disabled:text-gray-400 disabled:cursor-not-allowed transition-all flex items-center justify-center",
                 className
             )}
         >
-            <Spinner />
+            {isLoading && <Spinner className="w-6 h-6" />}
+            {!isLoading && children}
         </button>
     );
 }
