@@ -19,3 +19,4 @@ const signup = async (params: SignupParams) => {
 };
 
 export { signup };
+export type { SignupParams };

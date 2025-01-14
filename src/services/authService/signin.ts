@@ -5,8 +5,12 @@ interface SigninParams {
     password: string;
 }
 
+interface SigninResponse {
+    accessToken: string;
+}
+
 const signin = async (params: SigninParams) => {
-    const { data } = await httpClient.post<{ accessToken: string }>(
+    const { data } = await httpClient.post<SigninResponse>(
         "/auth/sign-in",
         params
     );
@@ -14,3 +18,4 @@ const signin = async (params: SigninParams) => {
 };
 
 export { signin };
+export type { SigninParams };
