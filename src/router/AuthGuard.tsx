@@ -1,21 +1,27 @@
-import { Navigate, Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../app/hooks/useAuth";
+import { useEffect } from "react";
 
 interface AuthGuardProps {
-  isPrivate: boolean;
+    isPrivate: boolean;
 }
 
 export function AuthGuard({ isPrivate }: AuthGuardProps) {
-    const signedIn = useAuth();
-    console.log(signedIn);
+    const { signedIn } = useAuth();
+    const navigate = useNavigate();
 
-  if (!signedIn && isPrivate) {
-    return <Navigate to={'/login'} replace />;
-  }
+    useEffect(() => {
+        console.log(signedIn);
+        if (!signedIn && isPrivate) {
+            navigate("/login", { replace: true });
+            console.log("firstTime");
+        }
 
-  if (signedIn && isPrivate) {
-    return <Navigate to={'/dashboard'} replace />;
-  }
+        if (signedIn && isPrivate) {
+            console.log("lastTime:");
+            navigate("/", { replace: true });
+        }
+    }, [isPrivate, navigate, signedIn]);
 
-  return <Outlet />;
+    return <Outlet />;
 }

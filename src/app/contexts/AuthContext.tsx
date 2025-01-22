@@ -2,16 +2,7 @@ import { createContext } from "react";
 
 interface AuthContextValue {
     signedIn: boolean;
+    signIn(accessToken: string): void;
 }
 
-export const AuthContext = createContext<AuthContextValue>({
-    signedIn: false,
-});
-
-export function AuthProvider({ children }: { children: React.ReactNode }) {
-    return (
-        <AuthContext.Provider value={{ signedIn: true }}>
-            {children}
-        </AuthContext.Provider>
-    );
-}
+export const AuthContext = createContext({} as AuthContextValue);

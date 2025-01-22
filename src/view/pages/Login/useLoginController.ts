@@ -5,6 +5,7 @@ import { authService } from "../../../services/authService";
 import { useMutation } from "@tanstack/react-query";
 import { SigninParams } from "../../../services/authService/signin";
 import toast from "react-hot-toast";
+import { useAuth } from "../../../app/hooks/useAuth";
 
 const schema = z.object({
     email: z
@@ -34,9 +35,11 @@ export function useLoginController() {
         },
     });
 
+    const { signIn } = useAuth();
     const handleSubmit = hookFormSubmit(async (data) => {
         try {
-            await mutateAsync(data);
+            const { accessToken } = await mutateAsync(data);
+            signIn(accessToken);
         } catch {
             toast.error("Credentials inválidas");
         }
