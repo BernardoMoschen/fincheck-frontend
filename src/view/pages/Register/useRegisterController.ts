@@ -37,6 +37,7 @@ export function useRegisterController() {
     });
 
     const { signIn } = useAuth();
+
     const handleSubmit = hookFormHandleSubmit(async (data) => {
         try {
             const { accessToken } = await mutateAsync(data);

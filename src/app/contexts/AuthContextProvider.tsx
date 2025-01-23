@@ -15,8 +15,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setSignedIn(true);
     }, []);
 
+    const signOut = useCallback(() => {
+        localStorage.removeItem(localStorageKeys.ACCESS_TOKEN);
+        setSignedIn(false);
+    }, []);
+
     return (
-        <AuthContext.Provider value={{ signedIn: signedIn, signIn }}>
+        <AuthContext.Provider value={{ signedIn: signedIn, signIn, signOut }}>
             {children}
         </AuthContext.Provider>
     );
