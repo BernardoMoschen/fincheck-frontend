@@ -1,6 +1,8 @@
 import { useCallback, useState } from "react";
 import { AuthContext } from "./AuthContext";
 import { localStorageKeys } from "../config/localStorageKeys";
+import { useQuery } from "@tanstack/react-query";
+import { usersService } from "../../services/usersService";
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [signedIn, setSignedIn] = useState<boolean>(() => {
@@ -8,6 +10,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             localStorageKeys.ACCESS_TOKEN
         );
         return !!storedAccessToken;
+    });
+
+    useQuery({
+        queryKey: ["users", "me"],
+        queryFn: () => usersService.me(),
     });
 
     const signIn = useCallback((accessToken: string) => {
