@@ -6,6 +6,6 @@ interface MeResponse {
 }
 
 export const me = async () => {
-    const { data } = await httpClient.post<MeResponse>("/users/me");
+    const { data } = await httpClient.get<MeResponse>("/users/me");
     return data;
 };
