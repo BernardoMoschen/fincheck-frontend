@@ -11,14 +11,14 @@ export function AuthGuard({ isPrivate }: AuthGuardProps) {
     const navigate = useNavigate();
 
     useEffect(() => {
+        console.log(signedIn);
+        console.log(signedIn && isPrivate);
         if (!signedIn && isPrivate) {
             navigate("/login", { replace: true });
-            console.log("firstTime");
         }
 
-        if (signedIn && isPrivate) {
-            console.log("lastTime:");
-            navigate("/", { replace: true });
+        if (signedIn && !isPrivate) {
+            navigate("/dashboard", { replace: true });
         }
     }, [isPrivate, navigate, signedIn]);
 
