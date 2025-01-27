@@ -3,3 +3,4 @@ export * from "./Input";
 export * from "./Logo";
 export * from "./LaunchScreen";
 export * from "./Spinner";
+export * from "./UserMenu";

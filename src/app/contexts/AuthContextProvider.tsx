@@ -14,7 +14,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return !!storedAccessToken;
     });
 
-    const { data, isError, isFetching, isSuccess } = useQuery({
+    const { isError, isFetching, isSuccess } = useQuery({
         queryKey: ["users", "me"],
         queryFn: () => usersService.me(),
         enabled: signedIn,
@@ -50,7 +50,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             }}
         >
             <LaunchScreen isLoading={isFetching} />
-            <h1>{data?.email}</h1>
             {!isFetching && children}
         </AuthContext.Provider>
     );
