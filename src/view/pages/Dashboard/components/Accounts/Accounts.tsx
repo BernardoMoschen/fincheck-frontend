@@ -1,10 +1,13 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
-import { EyeIcon } from "../../../icons/EyeIcon";
+import { EyeIcon } from "../../../../icons/EyeIcon";
 import { AccountCard } from "./AccountCard";
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/scss';
+import { Swiper, SwiperSlide, } from "swiper/react";
+import "swiper/scss";
+import { AccountSliderNavigation } from "./AccountSliderNavigation";
+import { useAccountsController } from "./useAccountsController";
 
 export function Accounts() {
+    const { sliderState, setSliderState } = useAccountsController()
+
     return (
         <div className="bg-teal-900 rounded-2xl w-full h-full md:p-10 px-4 py-8 flex flex-col">
             <div>
@@ -21,25 +24,20 @@ export function Accounts() {
                 </div>
             </div>
             <div className="flex flex-1 flex-col justify-end">
-                <div className="flex items-center justify-between">
-                    <strong className="text-white tracking-[-1px] text-lg font-bold">
-                        Minhas contas
-                    </strong>
-
-                    <div>
-                        <button
-                            disabled
-                            className="py-3 pl-2.5 pr-3.5 rounded-full enabled:hover:bg-black/10 transition-colors disabled:opacity-40"
+                <div>
+                    <Swiper spaceBetween={16} slidesPerView={1.5} onSlideChange={(swp) => setSliderState({
+                        isBeginning: swp.isBeginning,
+                        isEnd: swp.isEnd
+                    })} >
+                        <div
+                            className="flex items-center justify-between mb-4"
+                            slot="container-start"
                         >
-                            <ChevronRightIcon className="text-white w-6 h-6" />
-                        </button>
-                        <button className="py-3 pl-2.5 pr-3.5 rounded-full enabled:hover:bg-black/10 transition-colors disabled:opacity-40">
-                            <ChevronLeftIcon className="text-white w-6 h-6" />
-                        </button>
-                    </div>
-                </div>
-                <div className="mt-4">
-                    <Swiper spaceBetween={16} slidesPerView={1.5}>
+                            <strong className="text-white tracking-[-1px] text-lg font-bold">
+                                Minhas contas
+                            </strong>
+                            <AccountSliderNavigation isBeginning={sliderState.isBeginning} isEnd={sliderState.isEnd} />
+                        </div>
                         <SwiperSlide>
                             <AccountCard
                                 color="#7950F2"
@@ -52,6 +50,14 @@ export function Accounts() {
                             <AccountCard
                                 color="#0f0"
                                 name="XP"
+                                balance={555}
+                                type="INVESTMENT"
+                            />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <AccountCard
+                                color="#f85"
+                                name="Itaú"
                                 balance={555}
                                 type="INVESTMENT"
                             />
