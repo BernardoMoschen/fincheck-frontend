@@ -1,20 +1,21 @@
 import { formatCurrency } from "../../../../app/utils";
-import { CategoryIcon } from "../../../icons/categories/CategoryIcon";
+import { BankAccountTypeIcon } from "../../../icons/BankAccountTypeIcon";
 
 interface AccountCardProps {
     color: string;
     name: string;
     balance: number;
+    type: "CASH" | "CHECKING" | "INVESTMENT";
 }
 
-export function AccountCard({ balance, color, name }: AccountCardProps) {
+export function AccountCard({ balance, color, name, type }: AccountCardProps) {
     return (
         <div
             className="bg-white p-4 rounded-2xl h-[200px] flex flex-col justify-between border-b-4 border-teal-950"
             style={{ borderColor: color }}
         >
-            <div>   
-                <CategoryIcon type="income" />
+            <div>
+                <BankAccountTypeIcon type={type} />
                 <span className="text-gray-800 font-medium tracking-[-0.5px] mt-4 block">
                     {name}
                 </span>
