@@ -1,6 +1,8 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import { EyeIcon } from "../../../icons/EyeIcon";
 import { AccountCard } from "./AccountCard";
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/scss';
 
 export function Accounts() {
     return (
@@ -36,19 +38,25 @@ export function Accounts() {
                         </button>
                     </div>
                 </div>
-                <div>
-                    <AccountCard
-                        color="#7950F2"
-                        name="Nubank"
-                        balance={1000}
-                        type="CASH"
-                    />
-                    <AccountCard
-                        color="#0f0"
-                        name="XP"
-                        balance={555}
-                        type="INVESTMENT"
-                    />
+                <div className="mt-4">
+                    <Swiper spaceBetween={16} slidesPerView={1.5}>
+                        <SwiperSlide>
+                            <AccountCard
+                                color="#7950F2"
+                                name="Nubank"
+                                balance={1000}
+                                type="CASH"
+                            />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <AccountCard
+                                color="#0f0"
+                                name="XP"
+                                balance={555}
+                                type="INVESTMENT"
+                            />
+                        </SwiperSlide>
+                    </Swiper>
                 </div>
             </div>
         </div>
