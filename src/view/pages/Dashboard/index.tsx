@@ -1,6 +1,6 @@
 import { Logo, UserMenu } from "../../components";
-import { Accounts } from "./components/Accounts/Accounts";
-import { Transactions } from "./components/Transactions/Transactions";
+import { Accounts } from "./components/Accounts";
+import { Transactions } from "./components/Transactions";
 
 export default function Dashboard() {
     return (
